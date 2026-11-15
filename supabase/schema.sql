@@ -18,3 +18,7 @@ create policy "Users can update their own tracker data"
   on public.tracker_data for update to authenticated
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
+
+-- Ensure signed-in users can access the table through the Supabase Data API.
+grant select, insert, update on public.tracker_data to authenticated;
+revoke all on public.tracker_data from anon;
