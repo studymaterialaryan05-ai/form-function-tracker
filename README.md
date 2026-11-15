@@ -1,6 +1,6 @@
 # Form & Function
 
-A mobile-first personal progress tracker for posture habits, mobility, strength, recovery and self-care. The deployable web app lives in `www/`. The original root-level PWA files are retained as a fallback.
+A mobile-first personal progress tracker for posture habits, mobility, strength, recovery and self-care. The single application source of truth is www/. Vercel builds www/, and Capacitor uses webDir www/. Root index.html redirects to www/; root sw.js supports only that redirect entry. Feature work belongs in www/. Release IDs for the app shell, tracker helper and required local assets are generated from their contents during Vercel and Capacitor builds.
 
 ## Current architecture
 
@@ -16,7 +16,7 @@ A mobile-first personal progress tracker for posture habits, mobility, strength,
 2. Choose **Add New → Project**.
 3. Import `studymaterialaryan05-ai/form-function-tracker`.
 4. Framework preset: **Other**.
-5. Build command: leave empty.
+5. Build command: npm run build:web (generates a content-based release ID; this step installs no dependencies).
 6. Output directory: `www`.
 7. Click **Deploy**.
 
@@ -52,7 +52,7 @@ git clone https://github.com/studymaterialaryan05-ai/form-function-tracker.git
 cd form-function-tracker
 npm install
 npx cap add android
-npx cap sync android
+npm run cap:sync
 npx cap open android
 ```
 
@@ -71,7 +71,7 @@ After web changes are committed, Vercel deploys the website. For changes to the 
 
 ```powershell
 npm install
-npx cap sync android
+npm run cap:sync
 ```
 
 Then rebuild the APK in Android Studio.

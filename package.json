@@ -4,9 +4,11 @@
   "private": true,
   "description": "Personal posture, mobility and habit tracker",
   "scripts": {
-    "cap:sync": "cap sync android",
+    "cap:sync": "npm run build:web && cap sync android",
     "cap:open": "cap open android",
-    "cap:add:android": "cap add android"
+    "cap:add:android": "cap add android",
+    "test": "node --test",
+    "build:web": "node scripts/prepare-release.cjs"
   },
   "dependencies": {
     "@capacitor/core": "^8.0.0"
