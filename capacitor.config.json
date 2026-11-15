@@ -1,0 +1,8 @@
+{
+  "appId": "com.formandfunction.tracker",
+  "appName": "Form & Function",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
